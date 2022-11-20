@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
-    private Vector3 movement;
-    public float x = 0;
-    public float z = 1;
+     private Vector3 movement;
 
     // Start is called before the first frame update
     void Start()
     {
-        movement = new Vector3(x, 0f, z);
 
     }
 
     // Update is called once per frame
     void Update()
     {
+        float x = Input.GetAxis("Horizontal") * Time.deltaTime;
+        float z = Input.GetAxis("Vertical") * Time.deltaTime;
+        movement = new Vector3(x, 0f, z);
         transform.position += movement;
     }
 }
@@ -64,5 +64,12 @@ VEKTÖRLER
 * Vektörler bir değişkendir.
 * private Vector3 vektor = new Vector3(1f,2f,3f);
 
+* HideInInspector: public değişkeni inspector üzerinde gösterme.
+* SerializeField: private değişkeni inspector üzerinde göster.
+
+* Input.GetAxis("Horizontal");: Yatay hareket için kullanılır.
+* Input.GetAxis("Vertical");: Dikey hareket için kullanılır.
+
+Time.deltaTime: Bir frame'den diğerine geçen süreyi verir. Bu sayede sabit hızda hareket eder.
 
 */
